@@ -56,4 +56,7 @@ public class HappyOrSadController {
 		}
 		return happy;
 	}
+	public void setText(String text) {
+		this.text = text;
+	}
 }
