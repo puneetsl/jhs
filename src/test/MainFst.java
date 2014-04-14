@@ -1,17 +1,13 @@
 package test;
 
+import info.puneetsingh.jhs.controller.HappyOrSadController;
 
-
-import info.puneetsingh.jhs.controller.BigramController;
-import info.puneetsingh.jhs.controller.UnigramController;
-import info.puneetsingh.jhs.loader.UnigramLoader;
 public class MainFst {
 	public static void main(String[] args) {
-		BigramController bc = new BigramController();
-		UnigramController uc = new UnigramController();
-		String str = "chances are that this would work out but I am not very sure";
-		System.out.println(bc.getResultantCordinate(str).getX());
-		System.out.println(bc.getResultantCordinate(str).getY());
-		System.out.println(uc.getScore(str));
+		String text = "This library is awesome".replaceAll("[,']"," ").toLowerCase();
+		HappyOrSadController hsc = new HappyOrSadController(text);
+		System.out.println(hsc.getXcordinate());
+		System.out.println(hsc.getYcordinate());
+		System.out.println(hsc.getMoodValue());
 	}
 }

@@ -10,6 +10,8 @@ import info.puneetsingh.jhs.utils.Ngrams;
 public class BigramController {
 	private LIWCLoader liwcLoader = new LIWCLoader();
 	private BigramLoader bigramLoader= new BigramLoader();
+	private int totalPositive;
+	private int totalNegative;
 	public Cordinates getResultantCordinate(String text)
 	{
 		Ngrams ng = new Ngrams(text);
@@ -30,10 +32,23 @@ public class BigramController {
 		for (int i = 0; i < cordinatesArr.size(); i++) {
 			sumX += cordinatesArr.get(i).getX();
 			sumY += cordinatesArr.get(i).getY();
+			if(cordinatesArr.get(i).getY()>0)
+			{
+				totalPositive+=cordinatesArr.get(i).getY();
+			}
+			else if(cordinatesArr.get(i).getY()<0)
+			{
+				totalNegative+=cordinatesArr.get(i).getY();
+			}
 		}
 		Cordinates retCord = new Cordinates();
 		retCord.setX(sumX);retCord.setY(sumY);
 		return retCord;
 	}
-	
+	public int getTotalPositive() {
+		return totalPositive;
+	}
+	public int getTotalNegative() {
+		return totalNegative;
+	}
 }
