@@ -32,11 +32,14 @@ public class HappyOrSadController {
 	{
 		int totalPositives = bc.getTotalPositive();
 		int totalNegatives = bc.getTotalNegative();
+		int[] quadrants = bc.getQuadrants();
 		int total  = totalPositives - totalNegatives;
 		if(total==0)
 			return 50;
 		float happy = totalPositives*100.0f/(float)total;//one of the three fetures
+		float happy2 = (quadrants[0]+quadrants[3])*100/(quadrants[0]+quadrants[1]+quadrants[2]+quadrants[3]);
 		double intensity = 0;
+		
 		if(getXcordinate()>0)
 		{
 			intensity = Math.log10(10+getXcordinate());
@@ -50,7 +53,7 @@ public class HappyOrSadController {
 		happy = happy*0.90f+happyUni*0.10f;//9:1 weights for bigram and unigram
 		if(happy>100) happy=100;
 		if(happy<0) happy=0;
-		if(getXcordinate()<-2 && happy>50)
+		if(getXcordinate()<0 && happy>50)
 		{
 			happy = 100-happy;
 		}
@@ -58,5 +61,6 @@ public class HappyOrSadController {
 	}
 	public void setText(String text) {
 		this.text = text;
+		bc.getResultantCordinate(text);
 	}
 }
