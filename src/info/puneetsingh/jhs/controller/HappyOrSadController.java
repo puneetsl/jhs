@@ -38,6 +38,7 @@ public class HappyOrSadController {
 			return 50;
 		float happy = totalPositives*100.0f/(float)total;//one of the three fetures
 		float happy2 = (quadrants[0]+quadrants[3])*100/(quadrants[0]+quadrants[1]+quadrants[2]+quadrants[3]);
+		System.out.println(happy2);
 		double intensity = 0;
 		
 		if(getXcordinate()>0)
